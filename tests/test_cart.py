@@ -13,6 +13,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from exercise3 import Cart, OutOfStockError
+from exercise2 import Cart as CartClass
 
 GYOZA = {"id": 2, "name": "Gyoza (6 pc)", "price": 8.00, "available": True}
 RAMEN = {"id": 1, "name": "Tonkotsu Ramen", "price": 16.50, "available": True}
@@ -24,14 +25,14 @@ def test_empty_cart_total_is_zero():
 
 
 def test_total_across_multiple_items():
-    cart = Cart()
+    cart = CartClass()
     cart.add_item(GYOZA, 2)      # 16.00
     cart.add_item(RAMEN, 1)      # 16.50
     assert cart.total() == 32.50
 
 
 def test_adding_same_item_twice_increases_quantity():
-    cart = Cart()
+    cart = CartClass()
     cart.add_item(GYOZA, 2)
     cart.add_item(GYOZA, 1)
     assert len(cart.lines) == 1
