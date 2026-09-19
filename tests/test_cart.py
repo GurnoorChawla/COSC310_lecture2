@@ -58,3 +58,8 @@ def test_removing_an_absent_item_raises():
 
 
 # TODO: add one test of your own. What behaviour is not covered above?
+def test_cart_total():
+    cart = CartClass()
+    cart.add_item(GYOZA, 1)
+    cart.add_item(RAMEN, 2)
+    assert cart.total() == 41
